@@ -25,7 +25,7 @@ This is my play project (called: **_iTunes Media Search_**) where i am planning 
 
 ## Installation
 
-    git clone git@github.com:skusunam / angular-itunes-search.git
+    git clone git@github.com:skusunam/angular-itunes-search.git
     cd angular-itunes-search
     npm install
 
