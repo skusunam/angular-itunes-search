@@ -2,6 +2,8 @@
 
 This is my play project (called: **_iTunes Media Search_**) where i am planning to experiment and present my ideas on how we should do Angular development following some of the best practices i have learned in last 1yr. It will start easy and build\progress towards awesomeness. This iTunes Search implementation is inspired from @devgirl (Holly Schinsky) at [github](https://github.com/hollyschinsky/MediaExplorer).
 
+![screenshot](https://raw.github.com/skusunam/angular-itunes-search/gh-pages/itunes-search.png)
+
 ### This implementation demonstrate following things
 
 1. Can be used as quick "**_template_** \ **_seed_**" project for any new Angular Project.
