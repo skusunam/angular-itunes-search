@@ -1,0 +1,92 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+           <a class="navbar-brand" href="#"><img id="tunesImg" src="img/ITunes_11_Logo.png" width="32" height="32">iTunes Media Search</a>
+
+          <!--a class="navbar-brand" href="#">Project name</a-->
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <!--li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li-->
+            <li><a href="#">Login</a></li>
+          </ul>
+          <form class="navbar-form navbar-left form-inline" role="form">
+            <input type="text" class="form-control" placeholder="Search..." ng-model="searchTerm">
+            <label for="mediaType" class="label">Media Type</label>
+            <select class="form-control" id="mediaType" ng-model="mediaType">
+                <option value="all" selected>All</option>
+                <option value="musicVideo" selected>Video</option>
+                <option value="movie">Movie</option>
+                <option value="musicTrack">Music</option>
+                <option value="podcast">Podcast</option>
+                <option value="tvShow">TV Show</option>
+            </select>
+            <button type="button" ng-click="doSearch()" class="btn btn-primary">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li >Sort by</li>
+            <li ng-class="sortProp === 'artistName' ? 'active' : ''"><a href="" ng-click="setSortProp('artistName')">Artist</a></li>
+            <li ng-class="sortProp === 'collectionName' ? 'active' : ''"><a href="" ng-click="setSortProp('collectionName')">Colleciton Name</a></li>
+            <li ng-class="sortProp === 'wrapperType' ? 'active' : ''"><a href="" ng-click="setSortProp('wrapperType')">Media Item Name</a></li>
+            <li ng-class="sortProp === 'kind' ? 'active' : ''"><a href="" ng-click="setSortProp('kind')">Media Type</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li>Filter by</li>
+            <li><input type="text" ng-model="filterTerm" class="form-control" placeholder="Filter by"></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h2 class="sub-header">Search Results</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>Cover</th>
+                  <th>Track</th>
+                  <th>Type</th>
+                  <th>Artist</th>
+                  <th>Collection</th>
+                  <th>Collection Price</th>
+                  <th>Track Price</th>
+                </tr>              
+              </thead>
+              <tbody>
+                <tr ng-repeat="item in mediaResults | filter:filterTerm | orderBy:sortProp">
+                  <td>
+                    <button id="playBtn" class="btn" ng-click="playVideo(item)">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </button>
+                  </td>
+                  <td><a href="{{item.previewUrl}}"><img ng-src="{{item.artworkUrl60}}"/></a></td>
+                  <td>{{(item.trackName != null) && item.trackName || item.collectionName}}</td>
+                  <td>{{item.kind}}</td>
+                  <td>{{item.artistName}}</td>
+                  <td>{{item.collectionName}}</td>
+                  <td>{{item.trackPrice}}</td>
+                  <td>{{item.collectionPrice}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
